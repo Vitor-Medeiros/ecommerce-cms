@@ -1,12 +1,13 @@
 
 import './App.css'
+import { CategoryDataTable } from './cases/categories/components/data-table/category-data-table'
 
 function App() {
   
 
   return (
     <div className="wrapper">
-      <h1>E-commerce CMS</h1>
+      <CategoryDataTable/>
     </div>
   )
 }
