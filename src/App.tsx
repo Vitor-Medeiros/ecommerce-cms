@@ -1,13 +1,21 @@
-
-import './App.css'
-import { CategoryDataTable } from './cases/categories/components/data-table/category-data-table'
+import { Routes, Route} from 'react-router-dom'
+import { CategoryLayout } from './cases/categories/components/category-layout'
+import { CategoryForm } from './cases/categories/components/category-form'
 
 function App() {
   
 
   return (
     <div className="wrapper">
-      <CategoryDataTable/>
+      
+      <main>
+        <Routes>
+          <Route path="/categories" element={<CategoryLayout/>}/>
+          <Route path="new" element={<CategoryForm/>}/>
+        </Routes>
+
+      </main>
+
     </div>
   )
 }
