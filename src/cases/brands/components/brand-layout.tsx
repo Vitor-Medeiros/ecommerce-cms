@@ -9,9 +9,9 @@ import { BrandDataTable } from "./data-table/brand-data-table"
 
 export function BrandLayout() {
   const navigate = useNavigate();
-function handleCreate(){
-  navigate('/brands/new')
-}
+  function handleCreate() {
+    navigate('/brands/new')
+  }
 
   return (
     <div className="p-4">
@@ -28,15 +28,15 @@ function handleCreate(){
             </InputGroupAddon>
           </InputGroup>
           <Button
-           onClick={handleCreate}>
-            <Plus/>
+            onClick={handleCreate}>
+            <Plus />
             Adicionar
           </Button>
         </div>
 
         <div>
           <BrandDataTable />
-          <Outlet/>
+          <Outlet />
         </div>
 
       </div>

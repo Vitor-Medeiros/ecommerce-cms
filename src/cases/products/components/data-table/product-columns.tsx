@@ -6,7 +6,7 @@ export const productColumns: ColumnDef<ProductDTO>[] = [
     accessorKey: 'id',
     header: 'Id'
   },
-    {
+  {
     accessorKey: 'name',
     header: 'Nome do Produto'
   }

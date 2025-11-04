@@ -1,21 +1,21 @@
 import { SidebarForm } from "@/components/layout/sidebar-form";
 import { useParams } from "react-router-dom";
-import {useOrder} from "../hooks/use-order"
+import { useOrder } from "../hooks/use-order"
 
-export function OrderForm(){
-    const {id} = useParams<{id: string}>();
-    const {data, isLoading}=useOrder(id ?? '')
-    function handleSave(){
-        
+export function OrderForm() {
+    const { id } = useParams<{ id: string }>();
+    const { data, isLoading } = useOrder(id ?? '')
+    function handleSave() {
+
     }
 
-    return(
+    return (
         <SidebarForm title="Cadastro de Pedidos"
-        onSave={handleSave}
+            onSave={handleSave}
         >
             {isLoading ? (
                 <h4>Carregando</h4>
-            ):(
+            ) : (
                 <p>
                     {JSON.stringify(data)}
                 </p>

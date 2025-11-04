@@ -6,7 +6,7 @@ export const orderColumns: ColumnDef<OrderDTO>[] = [
     accessorKey: 'id',
     header: 'Id'
   },
-    {
+  {
     accessorKey: 'name',
     header: 'Nome do Pedido'
   }

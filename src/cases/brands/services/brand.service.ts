@@ -1,9 +1,9 @@
 import { api } from "../../../lib/axios";
 import type { BrandDTO } from "../dtos/brand.dto";
 
-const _ENDPOINT = "/categories";
+const _ENDPOINT = "/brands";
 
-export const BrandService ={
+export const BrandService = {
 
     async list(): Promise<BrandDTO[]> {
         const result = await api.get(_ENDPOINT);

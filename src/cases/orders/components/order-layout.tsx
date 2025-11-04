@@ -8,9 +8,9 @@ import { OrderDataTable } from "./data-table/order-data-table"
 
 export function OrderLayout() {
   const navigate = useNavigate();
-function handleCreate(){
-  navigate('/orders/new')
-}
+  function handleCreate() {
+    navigate('/orders/new')
+  }
 
   return (
     <div className="p-4">
@@ -27,15 +27,15 @@ function handleCreate(){
             </InputGroupAddon>
           </InputGroup>
           <Button
-           onClick={handleCreate}>
-            <Plus/>
+            onClick={handleCreate}>
+            <Plus />
             Adicionar
           </Button>
         </div>
 
         <div>
           <OrderDataTable />
-          <Outlet/>
+          <Outlet />
         </div>
 
       </div>

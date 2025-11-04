@@ -8,9 +8,9 @@ import { ProductDataTable } from "./data-table/product-data-table"
 
 export function ProductLayout() {
   const navigate = useNavigate();
-function handleCreate(){
-  navigate('/products/new')
-}
+  function handleCreate() {
+    navigate('/products/new')
+  }
 
   return (
     <div className="p-4">
@@ -27,15 +27,15 @@ function handleCreate(){
             </InputGroupAddon>
           </InputGroup>
           <Button
-           onClick={handleCreate}>
-            <Plus/>
+            onClick={handleCreate}>
+            <Plus />
             Adicionar
           </Button>
         </div>
 
         <div>
           <ProductDataTable />
-          <Outlet/>
+          <Outlet />
         </div>
 
       </div>

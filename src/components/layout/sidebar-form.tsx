@@ -1,73 +1,96 @@
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetClose,
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
 } from "@/components/ui/sheet"
 import { Button } from "../ui/button";
 import { useLocation, useNavigate } from "react-router-dom";
-import type { ReactNode, MouseEvent } from "react";
+import type { ReactNode } from "react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { Trash2 } from "lucide-react";
+
 
 type SidebarFormProps = {
     title: string;
-    children:ReactNode;
-    onSave?: ()=>void;
-
-};
-
+    children: ReactNode;
+    onSave?: () => void;
+    onDelete?: () => void;
+    loanding: boolean; 
+}
 export function SidebarForm({
     title,
-    children
-}: SidebarFormProps) {
-  const navigate=useNavigate();
-  const location=useLocation();
+    children,
+    onSave,
+    onDelete,
+    loanding
+}:SidebarFormProps) {
+    const navigate = useNavigate();
+    const location = useLocation();
 
-  function handleCloseForm(open:boolean){
-    if (!open){
-      const currentPath = location.pathname;
-      const newPath = currentPath.substring(0,currentPath.lastIndexOf('/'));
-      navigate(newPath);
+    function handleCloseForm(open: boolean) {
+        
+        if (!open) {
+            const currentPath = location.pathname;
+            const newPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+            navigate(newPath);
+        }
     }
-  }
 
-  function onSave(_event: MouseEvent<HTMLButtonElement>): void {
-    throw new Error("Function not implemented.");
-  }
+    return (
+        <Sheet open={true} onOpenChange={handleCloseForm}>
+            <SheetContent>
+                <SheetHeader>
+                    <SheetTitle>{title}</SheetTitle>
+                    <SheetDescription>
+                        Preencha os campos abaixo e clique em Salvar.
+                    </SheetDescription>
+                </SheetHeader>
 
-  return (
-    <Sheet open={true}onOpenChange={handleCloseForm}>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>{title}</SheetTitle>
-          <SheetDescription>
-            Preencha os campos abaixo e clique em salvar.
-          </SheetDescription>
-        </SheetHeader>
-         {children}
-        <SheetFooter>
-            <div className="flex flex-row gap-1">
+                {children}
 
-                <Button
-                  onClick={onSave}
-                >
-                    Salvar
-                </Button>
+                <SheetFooter className="flex flex-row justify-between">
+                    <div className="flex flex-row gap-1">
 
-                <SheetClose asChild>
-                    <Button
-                    variant={"outline"}
-                    >
-                        Cancelar
-                    </Button>
-                </SheetClose>
+                        <Button
+                        type="button"
+                            onClick={onSave}
+                            disabled={loanding}
+                        >
+                            Salvar
+                        </Button>
 
-            </div>
-        </SheetFooter>
+                        <SheetClose asChild>
+                            <Button
+                                variant='outline'
+                                disabled={loanding}
+                            >
+                                Cancelar
+                            </Button>
+                        </SheetClose>
 
-      </SheetContent>
-    </Sheet>
-  );
+                    </div>
+                    {onDelete && (<Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button
+                                variant="destructive"
+                                size='icon'
+                                onClick={onDelete}
+                            >
+                                <Trash2 />
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Deletar Registro</p>
+                        </TooltipContent>
+                    </Tooltip>)}
+                    
+
+                </SheetFooter>
+            </SheetContent>
+        </Sheet>
+    )
 }

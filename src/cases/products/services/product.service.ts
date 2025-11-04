@@ -3,7 +3,7 @@ import type { ProductDTO } from "../dtos/product.dto";
 
 const _ENDPOINT = "/products";
 
-export const ProductService ={
+export const ProductService = {
 
     async list(): Promise<ProductDTO[]> {
         const result = await api.get(_ENDPOINT);

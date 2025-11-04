@@ -3,7 +3,7 @@ import type { OrderDTO } from "../dtos/order.dto";
 
 const _ENDPOINT = "/orders";
 
-export const OrderService ={
+export const OrderService = {
 
     async list(): Promise<OrderDTO[]> {
         const result = await api.get(_ENDPOINT);

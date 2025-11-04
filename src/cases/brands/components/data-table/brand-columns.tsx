@@ -7,8 +7,8 @@ export const brandColumns: ColumnDef<BrandDTO>[] = [
     accessorKey: 'id',
     header: 'Id'
   },
-    {
+  {
     accessorKey: 'name',
-    header: 'Nome da Categoria'
+    header: 'Nome da Marca'
   }
 ];

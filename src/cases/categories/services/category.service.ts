@@ -3,8 +3,7 @@ import type { CategoryDTO } from "../dtos/category.dto";
 
 const _ENDPOINT = "/categories";
 
-export const CategoryService ={
-
+export const CategoryService = {
     async list(): Promise<CategoryDTO[]> {
         const result = await api.get(_ENDPOINT);
         return result.data;
@@ -27,5 +26,5 @@ export const CategoryService ={
 
     async delete(id: string): Promise<void> {
         await api.delete(`${_ENDPOINT}/${id}`);
-    }
-}
+    },
+};

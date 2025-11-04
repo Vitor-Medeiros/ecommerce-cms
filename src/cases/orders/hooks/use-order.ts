@@ -8,7 +8,7 @@ export function useOrders() {
         queryKey: ['orders'],
         queryFn: OrderService.list
     });
-}   
+}
 export function useOrder(id: string) {
     return useQuery<OrderDTO>({
         queryKey: ['order', id],
@@ -17,17 +17,17 @@ export function useOrder(id: string) {
     });
 }
 export function useCreateOrder() {
-    return useMutation<OrderDTO,Error, Omit<OrderDTO,'id'>>({
-        mutationFn: (order:Omit<OrderDTO,'id'>) => OrderService.create(order)
+    return useMutation<OrderDTO, Error, Omit<OrderDTO, 'id'>>({
+        mutationFn: (order: Omit<OrderDTO, 'id'>) => OrderService.create(order)
     });
 }
 export function useUpdateOrder() {
-    return useMutation<OrderDTO,Error, {id:string, order:OrderDTO}>({
-        mutationFn: ({id, order}) => OrderService.update(id, order)
+    return useMutation<OrderDTO, Error, { id: string, order: OrderDTO }>({
+        mutationFn: ({ id, order }) => OrderService.update(id, order)
     });
 }
 export function useDeleteOrder() {
-    return useMutation<void,Error, string>({
-        mutationFn: (id:string) => OrderService.delete(id)
+    return useMutation<void, Error, string>({
+        mutationFn: (id: string) => OrderService.delete(id)
     });
 }
