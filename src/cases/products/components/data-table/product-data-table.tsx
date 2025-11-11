@@ -4,16 +4,16 @@ import { useProducts } from "../../hooks/use-product";
 
 export function ProductDataTable() {
 
-    const { data: products, isLoading } = useProducts();
+    const {data: products, isLoading} = useProducts();
 
     return (
-
         <div>
-            {isLoading ? (
-                <p>Carregando</p>
+            { isLoading ? (
+                <p>Carregando...</p>
             ) : (
                 <DataTable columns={productColumns} data={products!} />
             )}
         </div>
+
     )
 }

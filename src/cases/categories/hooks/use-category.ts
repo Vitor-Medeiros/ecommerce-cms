@@ -19,44 +19,47 @@ export function useCategory(id: string) {
     });
 }
 
-export function useCreateCategory() {
+export function useCreateCategory(){
     const queryClient = useQueryClient();
+
     return useMutation<CategoryDTO, Error, Omit<CategoryDTO, 'id'>>({
         mutationFn: (category: Omit<CategoryDTO, 'id'>) => CategoryService.create(category),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['categories'] });
-            toast.success('Registro adicionado com sucesso!');
-        },
-        onError: () => {
-            toast.error('Erro ao adicionar o: ${registro.}');
+            queryClient.invalidateQueries({queryKey: ['categories']});
+            toast.success('Registro adicionado com sucessso!')
+        }, 
+        onError: (error) => {
+            toast.error(`Erro ao adicionar: ${error.message}`)
         }
     });
 }
 
 export function useUpdateCategory(){
     const queryClient = useQueryClient();
+
     return useMutation<CategoryDTO, Error, {id: string, category: CategoryDTO}>({
         mutationFn: ({id, category}) => CategoryService.update(id, category),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['categories'] });
-            toast.success('Registro alterado com sucesso!');
-        },
-        onError: () => {
-            toast.error('Erro ao alterar o: ${registro.}');
+            queryClient.invalidateQueries({queryKey: ['categories']});
+            toast.success('Registro alterado com sucessso!')
+        }, 
+        onError: (error) => {
+            toast.error(`Erro ao alterar: ${error.message}`)
         }
     });
 }
 
 export function useDeleteCategory(){
     const queryClient = useQueryClient();
+
     return useMutation<void, Error, string>({
         mutationFn: (id: string) => CategoryService.delete(id),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['categories'] });
-            toast.success('Registro excluido com sucesso!');
-        },
-        onError: () => {
-            toast.error('Erro ao excluir o: ${registro.}');
+            queryClient.invalidateQueries({queryKey: ['categories']});
+            toast.success('Registro exluído com sucessso!')
+        }, 
+        onError: (error) => {
+            toast.error(`Erro ao excluir: ${error.message}`)
         }
     });
 }

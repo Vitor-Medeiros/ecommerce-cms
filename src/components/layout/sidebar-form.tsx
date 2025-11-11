@@ -10,23 +10,23 @@ import {
 import { Button } from "../ui/button";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { ReactNode } from "react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Trash2 } from "lucide-react";
 
 
 type SidebarFormProps = {
     title: string;
     children: ReactNode;
-    onSave?: () => void;
-    onDelete?: () => void;
-    loanding: boolean; 
+    onSave?: () => void; 
+    onDelete?: () => void; 
+    loading: boolean;
 }
 export function SidebarForm({
     title,
     children,
     onSave,
     onDelete,
-    loanding
+    loading
 }:SidebarFormProps) {
     const navigate = useNavigate();
     const location = useLocation();
@@ -50,15 +50,17 @@ export function SidebarForm({
                     </SheetDescription>
                 </SheetHeader>
 
-                {children}
+                <div className="px-8">
+                    {children}
+                </div>
 
                 <SheetFooter className="flex flex-row justify-between">
                     <div className="flex flex-row gap-1">
 
                         <Button
-                        type="button"
+                            type="button"
                             onClick={onSave}
-                            disabled={loanding}
+                            disabled={loading}
                         >
                             Salvar
                         </Button>
@@ -66,29 +68,30 @@ export function SidebarForm({
                         <SheetClose asChild>
                             <Button
                                 variant='outline'
-                                disabled={loanding}
+                                disabled={loading}
                             >
                                 Cancelar
                             </Button>
                         </SheetClose>
 
                     </div>
-                    {onDelete && (<Tooltip>
-                        <TooltipTrigger asChild>
-                            <Button
-                                variant="destructive"
-                                size='icon'
-                                onClick={onDelete}
-                            >
-                                <Trash2 />
-                            </Button>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            <p>Deletar Registro</p>
-                        </TooltipContent>
-                    </Tooltip>)}
+                    {onDelete && (
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Button
+                                    variant='destructive'
+                                    size='icon'
+                                    onClick={onDelete}
+                                >
+                                    <Trash2 />
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>Remover o registro</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    )}
                     
-
                 </SheetFooter>
             </SheetContent>
         </Sheet>
