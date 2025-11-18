@@ -3,9 +3,23 @@ import { SidebarForm } from "@/components/layout/sidebar-form";
 import { useEffect, useState } from "react";
 import { useOrder, useUpdateOrder } from "../hooks/use-order";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,7 +31,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { OrderStatus } from "../dtos/order.dto";
-
 
 const formSchema = z.object({
   customerName: z.string().optional(),
@@ -150,7 +163,9 @@ export function OrderForm() {
                   data.items.map((item) => (
                     <TableRow key={item.id}>
                       <TableCell>{item.product?.name}</TableCell>
-                      <TableCell className="text-right">{item.quantity}</TableCell>
+                      <TableCell className="text-right">
+                        {item.quantity}
+                      </TableCell>
                       <TableCell className="text-right">
                         {item.value.toLocaleString("pt-BR", {
                           style: "currency",
@@ -167,7 +182,10 @@ export function OrderForm() {
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={4} className="text-center text-muted-foreground">
+                    <TableCell
+                      colSpan={4}
+                      className="text-center text-muted-foreground"
+                    >
                       Nenhum item encontrado.
                     </TableCell>
                   </TableRow>
