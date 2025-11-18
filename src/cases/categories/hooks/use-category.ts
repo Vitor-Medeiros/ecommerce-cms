@@ -37,7 +37,7 @@ export function useCreateCategory(){
 export function useUpdateCategory(){
     const queryClient = useQueryClient();
 
-    return useMutation<CategoryDTO, Error, {id: string, category: CategoryDTO}>({
+    return useMutation<CategoryDTO, Error, {id: string, category: CategoryDTO}>({                 
         mutationFn: ({id, category}) => CategoryService.update(id, category),
         onSuccess: () => {
             queryClient.invalidateQueries({queryKey: ['categories']});

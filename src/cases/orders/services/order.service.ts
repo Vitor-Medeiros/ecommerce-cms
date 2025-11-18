@@ -1,7 +1,9 @@
+
 import { api } from "../../../lib/axios";
 import type { OrderDTO } from "../dtos/order.dto";
 
-const _ENDPOINT = "/orders";
+
+const _ENDPOINT = '/orders';
 
 export const OrderService = {
 
@@ -14,4 +16,5 @@ export const OrderService = {
         const result = await api.get(`${_ENDPOINT}/${id}`);
         return result.data;
     },
-}
+
+};
