@@ -5,14 +5,14 @@ import { ProductService } from "../services/product.service";
 
 export function useProducts() {
   return useQuery<ProductDTO[]>({
-    queryKey: ["products"],
+    queryKey: ['products'],
     queryFn: ProductService.list,
   });
 }
 
 export function useProduct(id: string) {
   return useQuery<ProductDTO>({
-    queryKey: ["product", id],
+    queryKey: ['product', id],
     queryFn: () => ProductService.getById(id),
     enabled: !!id, //-> or Boolean(id)
   });

@@ -11,11 +11,13 @@ import { OrderLayout } from "./cases/orders/components/order-layout";
 import { OrderForm } from "./cases/orders/components/order-form";
 import { CustomerLayout } from "./cases/customers/components/customer-layout";
 import { CustomerForm } from "./cases/customers/components/customer-form";
+import { AppSidebar } from "./components/layout/app-sidebar";
 
 function App() {
   return (
     <div className="wrapper">
       <SidebarProvider>
+        <AppSidebar />
         <main className="w-full">
           <Routes>
             <Route path="/categories" element={<CategoryLayout />}>
